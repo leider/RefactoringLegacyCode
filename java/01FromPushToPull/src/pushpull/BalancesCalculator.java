@@ -1,9 +1,8 @@
 package pushpull;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.joda.time.LocalDate;
 
 import common.BalancesOfMonthCalculator_API;
 import common.BalancesOfMonth_API;
@@ -64,7 +63,7 @@ public class BalancesCalculator implements BalancesOfMonthCalculator_API {
 	}
 
 	private boolean areSameMonthAndYear(LocalDate date, LocalDate dateOfTransaction) {
-		return dateOfTransaction.getMonthOfYear() == date.getMonthOfYear() && dateOfTransaction.getYear() == date.getYear();
+		return dateOfTransaction.getMonthValue() == date.getMonthValue() && dateOfTransaction.getYear() == date.getYear();
 	}
 
 }

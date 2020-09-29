@@ -2,10 +2,10 @@ package common;
 
 import static org.junit.Assert.assertEquals;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.joda.time.LocalDate;
 import org.junit.Test;
 
 /**
@@ -17,9 +17,9 @@ import org.junit.Test;
  * </p>
  */
 public abstract class CalculatorTest {
-	private static final LocalDate APRIL_ULTIMO = new LocalDate(2010, 4, 30);
-	private static final LocalDate MAY_ULTIMO = new LocalDate(2010, 5, 31);
-	private static final LocalDate JUNE_ULTIMO = new LocalDate(2010, 6, 30);
+	private static final LocalDate APRIL_ULTIMO = LocalDate.of(2010, 4, 30);
+	private static final LocalDate MAY_ULTIMO = LocalDate.of(2010, 5, 31);
+	private static final LocalDate JUNE_ULTIMO = LocalDate.of(2010, 6, 30);
 	private final List<BalancesOfMonth_API> balances = new ArrayList<BalancesOfMonth_API>();
 
 	protected final List<Transaction_API> transactions = new ArrayList<Transaction_API>();
@@ -27,7 +27,7 @@ public abstract class CalculatorTest {
 
 	@Test
 	public void oneTransactionAtFirstOfMonthSetsBalanceAndAverage() {
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 1), 100));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 1), 100));
 		balances.add(new BalancesOfMonth_API(APRIL_ULTIMO));
 
 		calculator.fillData(balances);
@@ -39,7 +39,7 @@ public abstract class CalculatorTest {
 
 	@Test
 	public void oneTransactionAtUltimoOfMonthSetsBalanceAndAverage() {
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 30), 300));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 30), 300));
 		balances.add(new BalancesOfMonth_API(APRIL_ULTIMO));
 
 		calculator.fillData(balances);
@@ -51,8 +51,8 @@ public abstract class CalculatorTest {
 
 	@Test
 	public void twoTransactionAtFirstAndSixteenthOfMonthLeadToHalfAverageOfBalance() {
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 1), 100));
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 16), 200));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 1), 100));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 16), 200));
 		balances.add(new BalancesOfMonth_API(APRIL_ULTIMO));
 
 		calculator.fillData(balances);
@@ -64,8 +64,8 @@ public abstract class CalculatorTest {
 
 	@Test
 	public void balanceOfPreviousMonthIsFactoredIn() {
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 16), 100));
-		transactions.add(new Transaction_API(new LocalDate(2010, 5, 16), 200));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 16), 100));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 5, 16), 200));
 		balances.add(new BalancesOfMonth_API(APRIL_ULTIMO));
 		balances.add(new BalancesOfMonth_API(MAY_ULTIMO));
 
@@ -81,8 +81,8 @@ public abstract class CalculatorTest {
 
 	@Test
 	public void balanceOfPreviousMonthIsFactoredInOverTwoMonths() {
-		transactions.add(new Transaction_API(new LocalDate(2010, 4, 16), 100));
-		transactions.add(new Transaction_API(new LocalDate(2010, 5, 16), 200));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 4, 16), 100));
+		transactions.add(new Transaction_API(LocalDate.of(2010, 5, 16), 200));
 		balances.add(new BalancesOfMonth_API(APRIL_ULTIMO));
 		balances.add(new BalancesOfMonth_API(MAY_ULTIMO));
 		balances.add(new BalancesOfMonth_API(JUNE_ULTIMO));

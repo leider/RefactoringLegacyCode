@@ -1,9 +1,8 @@
 package pushpull;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
-
-import org.joda.time.LocalDate;
-import org.joda.time.chrono.ISOChronology;
 
 import common.Transaction_API;
 
@@ -43,7 +42,7 @@ public class ValuesOfMonth implements IValuesOfMonth {
 	}
 
 	private int daysInMonth() {
-		return ISOChronology.getInstance().dayOfMonth().getMaximumValue(dateOfMonth);
+		return YearMonth.from(dateOfMonth).lengthOfMonth();
 	}
 
 }

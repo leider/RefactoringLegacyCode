@@ -1,9 +1,8 @@
 package pushpull;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.joda.time.LocalDate;
 
 import common.Transaction_API;
 
@@ -13,7 +12,7 @@ public class ValuesOfMonth {
 	private final ValuesOfMonth precedingMonth;
 
 	public ValuesOfMonth() {
-		this(null, new LocalDate(), new ArrayList<Transaction_API>());
+		this(null, LocalDate.now(), new ArrayList<Transaction_API>());
 	}
 
 	public ValuesOfMonth(ValuesOfMonth precedingMonth, LocalDate dateOfMonth, List<Transaction_API> transactionsOfMonth) {
