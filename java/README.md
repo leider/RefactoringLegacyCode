@@ -27,7 +27,4 @@ We start with project "Push". Next we have the numbered projects:
 The final code can be seen in project "Pull". Here we added a few more extras. Look around and don't be shy to ask us or comment.
 
 ## Third party libraries
-The code is using [Joda Time](http://joda-time.sourceforge.net/index.html). The library files are inside the lib folder of the "Common" project.
-
-We are using these classes to not have to hassle with java.util.Date.
-
+Only JUnit and hamcrest for testing purposes.
